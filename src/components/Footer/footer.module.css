@@ -1,0 +1,31 @@
+.footer { 
+    /* width: 100vw;  */
+    background-color: #213547;
+    opacity: 0.9;
+   
+    padding: 0 20px ;
+}
+
+.img{
+  height: 100px;
+}
+
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.infoWrap{
+  display: block;
+}
+
+.nav{
+  display: block;
+}
+
+.copyright{
+  color: gray;
+  text-align: center;
+  font-size: 0.75rem;
+}

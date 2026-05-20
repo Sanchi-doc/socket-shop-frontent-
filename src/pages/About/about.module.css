@@ -1,0 +1,58 @@
+.info p {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideIn 0.6s ease forwards; 
+}
+
+/* задержка для каждого абзаца */
+.info p:nth-child(1) { animation-delay: 0.6s; }
+.info p:nth-child(2) { animation-delay: 0.7s; }
+.info p:nth-child(3) { animation-delay: 0.8s; }
+.info p:nth-child(4) { animation-delay: 0.9s; }
+.info p:nth-child(5) { animation-delay: 1s; }
+.info p:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.links {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popIn 0.6s ease forwards;
+  animation-delay: 3s; /* ⬅️ задержка 3 секунды */
+  width: 300px;
+  margin: 0 auto;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.links.animatiom { 
+    animation: scalePop 0.6 
+}
+
+.infoWraper {
+  margin: 0 auto;
+  width: 800px;
+}
+
+.title {
+  text-align: center;
+}
+
+.social:not(:last-child){ 
+  margin-right: 16px;
+}
