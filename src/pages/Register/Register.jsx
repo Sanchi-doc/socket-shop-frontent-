@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { register } from "../../redux/auth/authOperation"
-import styles from './register.module.css'
+import { register } from "../../redux/auth/authOperations"
+import * as SC from './register.styled'
 // import { useEffect } from "react"
 
 export const Register = () => {
@@ -19,13 +19,14 @@ export const Register = () => {
     //     setPassword(event.target.value)
     // }
     const dispatch = useDispatch()
-    const handleSubmit = (event) =>{
+    const handleSubmit = async (event) =>{
         event.preventDefault()
-          dispatch(register({
+          const result = await dispatch(register({
             name,
             email,
             password
-        }))
+        })).unwrap()
+        localStorage.setItem('token', result.token)
     } 
     const handleInputChange = (event) => {
         const {name, value} = event.target
@@ -44,13 +45,13 @@ export const Register = () => {
         
     }
     return <>
-    <form className={styles.form} onSubmit={handleSubmit}>
-    <input className={styles.input} type='text' name = 'name' value = {name} onChange={handleInputChange} placeholder="name"/>
-    <input className={styles.input} type='text' name = 'email' value = {email} onChange={handleInputChange} placeholder="email"/>
-    <input className={styles.input} type='password' name = 'password' value = {password} onChange={handleInputChange} placeholder="password"/>
+    <SC.formStyled  onSubmit={handleSubmit}>
+    <SC.inputStyled  type='text' name = 'name' value = {name} onChange={handleInputChange} placeholder="name"/>
+    <SC.inputStyled  type='text' name = 'email' value = {email} onChange={handleInputChange} placeholder="email"/>
+    <SC.inputStyled  type='password' name = 'password' value = {password} onChange={handleInputChange} placeholder="password"/>
     <button type='submit'>
         register
     </button>
-    </form>
+    </SC.formStyled>
     </>
 }

@@ -1,9 +1,9 @@
 import {Header} from '../Header/Header'
 import {Footer} from '../Footer/Footer'
 import { Outlet } from 'react-router-dom'
-import styles from './loyaut.module.css'
-export const Loyaut = () => {
+import * as SC from './layout.styled'
+export const Layout = () => {
     return <><Header/>
-    <main className={styles.main}><Outlet/></main>
+    <SC.mainStyles><Outlet/></SC.mainStyles>
     <Footer/></>
 }

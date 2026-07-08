@@ -1,15 +1,15 @@
-.header {
-    background-color: #213547;
-    padding: 0 16px;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    z-index: 100;
-    opacity: 0.9;
+.nav{ 
+  display: flex;
+  justify-content: center; 
 }
 
-.nav { 
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.button {
+    margin: 20px;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer
+}
+.button:hover {
+    background-color:yellow;
+    color: black;
 }

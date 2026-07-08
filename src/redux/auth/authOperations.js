@@ -40,7 +40,8 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
 export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     try {
-        const token = thunkAPI.getState().auth.token
+        // const token = thunkAPI.getState().auth.token
+        const token = localStorage.getItem('token')
         if(!token){
             return thunkAPI.rejectWithValue('cannot get user data')
         } 

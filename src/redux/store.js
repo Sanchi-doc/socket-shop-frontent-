@@ -11,24 +11,30 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import {productsApi} from '../redux/products/productsOperation'
+import { userApi } from './user/userOperation';
 
-const authPersistConfig = {
-    key: 'auth',
-    storage,
-    whitelist: ['token']
-}
+// const authPersistConfig = {
+//     key: 'auth',
+//     storage,
+//     whitelist: ['token']
+// }
 
 export const store = configureStore({
     reducer: {
-        auth: authSlice.reducer
+        [authSlice.name]: authSlice.reducer,
+        [productsApi.reducerPath]: productsApi.reducer,
+        [userApi.reducerPath]: userApi.reducer
     },
     middleware: getDefaultMiddleware => [
         ...getDefaultMiddleware({
            serializableCheck: {
             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
            }
-        })
+        }),
+        productsApi.middleware,
+        userApi.middleware
     ]
 })
 
-export const persistor = persistStore(store)
+// export const persistor = persistStore(store)

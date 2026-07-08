@@ -1,5 +1,5 @@
-import { useGetFavoritesQuery } from "../../redux/films/favoriteOperations"
-import { MovieList } from "../../components/MovieList/MovieList";
+// import { useGetFavoritesQuery } from "../../redux/films/favoriteOperations"
+// import { MovieList } from "../../components/MovieList/MovieList";
 import { toast } from 'react-toastify'
 import { useEffect } from "react";
 import { useAuth } from "../../hooks/useAuth";

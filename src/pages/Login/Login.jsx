@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import {login} from "../../redux/auth/authOperation"
+import {login} from "../../redux/auth/authOperations"
 import { TbEye } from "react-icons/tb";
 import { TbEyeClosed } from "react-icons/tb";
-import styles from './login.module.css'
+import * as SC from './login.styled'
 export const Login = () => {
     const[email, setEmail] = useState('')
     const[password, setPassword] = useState('')
@@ -27,24 +27,25 @@ export const Login = () => {
         }
     }
     const dispatch = useDispatch()
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
        event.preventDefault()
-       dispatch(login({
+       const result = await dispatch(login({
         email,
         password
-       }))
+       })).unwrap()
+       localStorage.setItem('token', result.token)
     }
     
     return <>
-    <form className={styles.form} onSubmit={handleSubmit}>
-    <input className={styles.input} type='text' name='email' value = {email} onChange={handleInputChange} placeholder="Email"/> 
-    <div className={styles.passwordWrap}>
-     <input  className={styles.input} type={isShowPass?'password':'text'} name='password' value = {password} onChange={handleInputChange} placeholder="Password"/>
-     <button className={styles.btn} type="button" onClick={handleShowPass}>{isShowPass?<TbEye/>:<TbEyeClosed/>}</button>
+    <SC.formStyled onSubmit={handleSubmit}>
+    <SC.inputStyled  type='text' name='email' value = {email} onChange={handleInputChange} placeholder="Email"/> 
+    <div >
+     <SC.inputStyled   type={isShowPass?'password':'text'} name='password' value = {password} onChange={handleInputChange} placeholder="Password"/>
+     <button  type="button" onClick={handleShowPass}>{isShowPass?<TbEye/>:<TbEyeClosed/>}</button>
     </div>
     <button type='submit'>
         login
     </button>
-    </form>
+    </SC.formStyled>
     </>
 }

@@ -1,9 +1,9 @@
 import { useGetCommentsQuery} from '../../redux/comments/commentsOperation'
 import { useParams } from 'react-router-dom'
 import { CommentsListItem } from '../../components/CommentsListItem/CommentsListItem'
-import { CommentsForm } from '../../components/CommentsForm/CommentsForm'
+// import { CommentsForm } from '../../components/CommentsForm/CommentsForm'
 import { useState } from 'react'
-import { Model } from '../../components/Model/Model'
+// import { Model } from '../../components/Model/Model'
 export const Comments = () => {
     const {id} = useParams()
     const { data } = useGetCommentsQuery(id)
