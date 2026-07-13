@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TbEye } from "react-icons/tb";
 import { TbEyeClosed } from "react-icons/tb";
 import { useGetUserQuery } from '../../redux/user/userOperation';
@@ -9,7 +9,12 @@ export const Cabinet = () => {
     const [email, setEmail] = useState(data?.data.email)
     const [password, setPassword] = useState('')
     const [isShowPass, setShowPass] = useState('')
-
+    
+    useEffect(()=>{
+        setName(data?.data.name)
+        setEmail(data?.data.email)
+    },[data])
+    
     const handleShowPass = () => {
         setShowPass(!isShowPass)
     }
