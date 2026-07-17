@@ -19,7 +19,7 @@ export const Cabinet = () => {
         setShowPass(!isShowPass)
     }
 
-    const handleInputClick = (event) => {
+    const handleInputChange = (event) => {
        const {name, value} = event.target
        switch(name){
         case 'name':
@@ -34,17 +34,21 @@ export const Cabinet = () => {
         default: return    
        }
     }
-    return <form>
+    return <>
     <SC.h2Styled>Cabinet</SC.h2Styled>
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPAR7BKsMrNciKv1aWcwx84hQ1wJibKZZy1XjyxUNH5w&s=10" alt="cabinet"/>
-    <div>
-    <input type="text" name="name" value={name} placeholder="change your name"/>
-    <input type="text" name='email' value={email} placeholder="change your email"/>
-    <div>
-     <input type={isShowPass?'password': 'text'} name="password"  value={password} placeholder="change your password"/>
-     <button type='button' onClick={handleShowPass}>{isShowPass?<TbEye/>:<TbEyeClosed/>}</button>
-    </div>
-    <button type='submit'>Save</button>
-    </div>
-    </form>
+    <SC.formStyled>
+    <SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPAR7BKsMrNciKv1aWcwx84hQ1wJibKZZy1XjyxUNH5w&s=10" alt="cabinet"/>
+    <SC.divStyled>
+        <SC.paragrafStyled>Name: {name}</SC.paragrafStyled>
+    <SC.inputStyled type="text" name="name" value={name} placeholder="change your name"onChange={handleInputChange}/>
+        <SC.paragrafStyled>Email: {email}</SC.paragrafStyled>
+    <SC.inputStyled type="text" name='email' value={email} placeholder="change your email" onChange={handleInputChange}/>
+     <SC.passStyled>
+        <SC.paragrafStyled>Password</SC.paragrafStyled>
+      <SC.inputStyled type={isShowPass?'password': 'text'} name="password"  value={password} placeholder="change your password" onChange={handleInputChange}/>
+      <SC.hideButtonStyled type='button' onClick={handleShowPass}>{isShowPass?<TbEye/>:<TbEyeClosed/>}</SC.hideButtonStyled>
+     </SC.passStyled>
+     <SC.buttonStyled type='submit'>Save</SC.buttonStyled>
+    </SC.divStyled>
+    </SC.formStyled></>
 }

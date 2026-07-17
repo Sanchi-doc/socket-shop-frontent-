@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux"
 import {HeaderStyle} from './header.styled'
 import { Cabinet } from "../../pages/Cabinet/Cabinet"
 import * as SC from './header.styled'
-import styled from './header.module.css'
 
 
 export const Header = () => {
@@ -16,12 +15,12 @@ export const Header = () => {
 }
     const {isLoggedIn} = useAuth() 
     return <SC.HeaderStyle>
-    <nav className={styled.nav}>
+    <SC.navigateStyled >
         <SC.h2Styled>Potuzhno Shop</SC.h2Styled>
     <MainNav/>
     {!isLoggedIn && <AuthNav/> }
     {isLoggedIn && <SC.NavStyled to={`/cabinet`}>cabinet</SC.NavStyled>}
-   {isLoggedIn && <button className={styled.button} onClick = {handleLogout} type="button">logout</button>}
-   </nav>
+   {isLoggedIn && <SC.logutStyled  onClick = {handleLogout} type="button">logout</SC.logutStyled>}
+   </SC.navigateStyled>
     </SC.HeaderStyle>
 }

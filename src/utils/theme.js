@@ -44,6 +44,7 @@ export const theme = {
   borders: {
     none: 'none',
     navBorder: '1px solid whitesmoke ',
+    borderRadius: '16px'
   },
   shadows: {
     boxShadow: '0px 0px 2px 1px wheat',
