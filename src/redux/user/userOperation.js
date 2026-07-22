@@ -21,7 +21,15 @@ export const userApi = createApi({
                 url: `/api/user/info`
             }),
             providesTags: ['user']
+        }),
+        updateUser: builder.mutation({
+            query: (body) => ({
+                method: "PATCH",
+                url: `/api/user/info/update`,
+                body
+            }),
+            invalidatesTags: ['user']
         })
     })
 })
-export const { useGetUserQuery } = userApi
+export const { useGetUserQuery, useUpdateUserMutation } = userApi

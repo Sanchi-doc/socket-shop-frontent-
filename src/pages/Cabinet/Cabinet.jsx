@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { TbEye } from "react-icons/tb";
 import { TbEyeClosed } from "react-icons/tb";
 import { useGetUserQuery } from '../../redux/user/userOperation';
+import { useUpdateUserMutation } from '../../redux/user/userOperation';
 import * as SC from './Cabinel.styled'
 export const Cabinet = () => {
     const {data} = useGetUserQuery()
+    const [updateUser] = useUpdateUserMutation()
     const [name, setName] = useState(data?.data.name)
     const [email, setEmail] = useState(data?.data.email)
     const [password, setPassword] = useState('')
@@ -34,15 +36,21 @@ export const Cabinet = () => {
         default: return    
        }
     }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        updateUser({name, email})
+    }
+
     return <>
     <SC.h2Styled>Cabinet</SC.h2Styled>
-    <SC.formStyled>
+    <SC.formStyled onSubmit={handleSubmit}>
     <SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPAR7BKsMrNciKv1aWcwx84hQ1wJibKZZy1XjyxUNH5w&s=10" alt="cabinet"/>
     <SC.divStyled>
         <SC.paragrafStyled>Name: {name}</SC.paragrafStyled>
-    <SC.inputStyled type="text" name="name" value={name} placeholder="change your name"onChange={handleInputChange}/>
+    <SC.inputStyled type="text" name="name" value={name} placeholder="change your name" onChange={handleInputChange} />
         <SC.paragrafStyled>Email: {email}</SC.paragrafStyled>
-    <SC.inputStyled type="text" name='email' value={email} placeholder="change your email" onChange={handleInputChange}/>
+    <SC.inputStyled type="text" name='email' value={email} placeholder="change your email" onChange={handleInputChange} />
      <SC.passStyled>
         <SC.paragrafStyled>Password</SC.paragrafStyled>
       <SC.inputStyled type={isShowPass?'password': 'text'} name="password"  value={password} placeholder="change your password" onChange={handleInputChange}/>
