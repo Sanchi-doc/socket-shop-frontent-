@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import {productsApi} from '../redux/products/productsOperation'
 import { userApi } from './user/userOperation';
+import { basketSlice } from './basket/basketReduser';
 
 // const authPersistConfig = {
 //     key: 'auth',
@@ -24,7 +25,8 @@ export const store = configureStore({
     reducer: {
         [authSlice.name]: authSlice.reducer,
         [productsApi.reducerPath]: productsApi.reducer,
-        [userApi.reducerPath]: userApi.reducer
+        [userApi.reducerPath]: userApi.reducer,
+        [basketSlice.name]: basketSlice.reducer
     },
     middleware: getDefaultMiddleware => [
         ...getDefaultMiddleware({

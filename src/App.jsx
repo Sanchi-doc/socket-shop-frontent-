@@ -20,6 +20,7 @@ import { Jewelery } from './pages/Jewelery/Jewelery'
 import { Electronics } from './pages/Electronics/Electronics'
 import { Categories } from './pages/Categories/Categories'
 import { Cabinet } from './pages/Cabinet/Cabinet'
+import { Basket } from './pages/Basket/Basket'
 function App() {
   const dispatch = useDispatch()
   const {isRefreshing} = useAuth()
@@ -50,6 +51,7 @@ function App() {
     <Route path='/details/:id' element = {<ShopDetails/>}/>
     <Route path='/category/:category' element = {<Categories/>}/>
     <Route path='/cabinet' element = {<Cabinet/>}/>
+    <Route path='/basket' element = {<Basket/>}/>
     </Route>  
     </Routes>
   )

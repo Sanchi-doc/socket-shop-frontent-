@@ -1,3 +1,4 @@
+import { CiShoppingBasket } from "react-icons/ci";
 import { MainNav } from "../MainNav/MainNav"
 import { AuthNav } from "../authNav/authNav"
 import { useAuth } from "../../hooks/useAuth"
@@ -20,6 +21,7 @@ export const Header = () => {
     <MainNav/>
     {!isLoggedIn && <AuthNav/> }
     {isLoggedIn && <SC.NavStyled to={`/cabinet`}>cabinet</SC.NavStyled>}
+    {isLoggedIn && <SC.NavStyled to={`/basket`}>{CiShoppingBasket}</SC.NavStyled>}
    {isLoggedIn && <SC.logutStyled  onClick = {handleLogout} type="button">logout</SC.logutStyled>}
    </SC.navigateStyled>
     </SC.HeaderStyle>
