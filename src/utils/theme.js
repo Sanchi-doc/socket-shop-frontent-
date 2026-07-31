@@ -14,6 +14,7 @@ export const theme = {
     xl: 64,
   },
   fontWeights: {
+    min: 120,
     normal: 400,
     medium: 700,
     bold: 900,

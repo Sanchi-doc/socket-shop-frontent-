@@ -10,20 +10,23 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+// import storage from 'redux-persist/lib/storage';
+import storageModule from "redux-persist/lib/storage";
 import {productsApi} from '../redux/products/productsOperation'
 import { userApi } from './user/userOperation';
 import { basketSlice } from './basket/basketReduser';
 
-// const authPersistConfig = {
-//     key: 'auth',
-//     storage,
-//     whitelist: ['token']
-// }
+const storage = storageModule.default ?? storageModule;
+
+const authPersistConfig = {
+    key: 'auth',
+    storage,
+    whitelist: ['token']
+}
 
 export const store = configureStore({
     reducer: {
-        [authSlice.name]: authSlice.reducer,
+        [authSlice.name]: persistReducer(authPersistConfig, authSlice.reducer),
         [productsApi.reducerPath]: productsApi.reducer,
         [userApi.reducerPath]: userApi.reducer,
         [basketSlice.name]: basketSlice.reducer
@@ -39,4 +42,4 @@ export const store = configureStore({
     ]
 })
 
-// export const persistor = persistStore(store)
+export const persistor = persistStore(store)
