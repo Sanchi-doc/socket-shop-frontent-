@@ -17,3 +17,8 @@ export const DivStyled = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export const buttonStyled = styled.button`
+  border: none;
+  background-color: transparent;
+`

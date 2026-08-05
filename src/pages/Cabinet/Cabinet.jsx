@@ -45,7 +45,7 @@ export const Cabinet = () => {
     return <>
     <SC.h2Styled>Cabinet</SC.h2Styled>
     <SC.formStyled onSubmit={handleSubmit}>
-    <SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPAR7BKsMrNciKv1aWcwx84hQ1wJibKZZy1XjyxUNH5w&s=10" alt="cabinet"/>
+    <SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10" alt="cabinet"/>
     <SC.divStyled>
         <SC.paragrafStyled>Name: {name}</SC.paragrafStyled>
     <SC.inputStyled type="text" name="name" value={name} placeholder="change your name" onChange={handleInputChange} />

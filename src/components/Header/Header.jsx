@@ -15,13 +15,17 @@ export const Header = () => {
     await dispatch(logout())
 }
     const {isLoggedIn} = useAuth() 
+    const basket = JSON.parse(localStorage.getItem('basket'))?? []
     return <SC.HeaderStyle>
     <SC.navigateStyled >
         <SC.h2Styled>Potuzhno Shop</SC.h2Styled>
     <MainNav/>
     {!isLoggedIn && <AuthNav/> }
     {isLoggedIn && <SC.NavStyled to={`/cabinet`}>cabinet</SC.NavStyled>}
-    {isLoggedIn && <SC.NavStyled to={`/basket`}>{CiShoppingBasket}</SC.NavStyled>}
+    <SC.parentDivStyled>
+        <SC.NavStyled to={`/basket`}>{<CiShoppingBasket size={32}/>}</SC.NavStyled>
+        <SC.basketLengthStyled>{basket.length}</SC.basketLengthStyled>
+        </SC.parentDivStyled>
    {isLoggedIn && <SC.logutStyled  onClick = {handleLogout} type="button">logout</SC.logutStyled>}
    </SC.navigateStyled>
     </SC.HeaderStyle>

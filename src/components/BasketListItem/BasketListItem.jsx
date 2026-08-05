@@ -4,35 +4,36 @@ import * as SC from './BasketLisItem.styled'
 import { useState } from "react";
 export const BasketListItem = ({id, title, image, price, count}) => {
 
-  const [isReRender, setIsReRender] = useState(false)
+  const [basket, setBasket] = useState({id, title, image, price, count})
 
-  const IncrementCount = async(event) => {
+  const IncrementCount = (event) => {
     console.log('event', event.currentTarget.name);
     
     const basketCount = JSON.parse(localStorage.getItem('basket'))??[]
     const findByID = basketCount.find(product => product.id == id)
     const filtredCount = basketCount.filter(product => product.id != id)
+
     if(event.currentTarget.name === 'increment') {
-      findByID.count = count++
+      findByID.count = basket.count+1
     }else{
-     findByID.count = count--
+     findByID.count = basket.count-1
     }
     console.log('filterCount', filtredCount);
     
-    await localStorage.setItem('basket', JSON.stringify([...filtredCount, findByID]))
-    // setIsReRender(!isReRender)
+    localStorage.setItem('basket', JSON.stringify([...filtredCount, findByID]))
+    setBasket(findByID)
   }
   
   
   return <SC.LiStyled>
-       <SC.ImgStyled src={image} alt={title}/>
-       <SC.H1Styled>{title}</SC.H1Styled>
+       <SC.ImgStyled src={basket.image} alt={basket.title}/>
+       <SC.H1Styled>{basket.title}</SC.H1Styled>
        
       <SC.DivStyled>
-        <button type="button" onClick={IncrementCount} name="increment"><FaArrowUp /></button>
-        <p>count: {count}</p>
-        <button type="button" onClick={IncrementCount} name="dicriment" disabled={count===1}><FaArrowDown /></button>
+        <SC.buttonStyled type="button" onClick={IncrementCount} name="increment"><FaArrowUp fill={'green'}/></SC.buttonStyled>
+        <p>count: {basket.count}</p>
+        <SC.buttonStyled type="button" onClick={IncrementCount} name="dicriment" disabled={basket.count===1}><FaArrowDown fill={'red'}/></SC.buttonStyled>
       </SC.DivStyled>
-      <p>Price: ${+price * +count}</p>
+      <p>Price: ${(+basket.price * +basket.count).toFixed(2)}</p>
     </SC.LiStyled>
 }

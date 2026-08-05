@@ -2,7 +2,7 @@ import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa"
 import styles from './about.module.css'
 export const About = () => {
    return <div >
-      <h1 >Sanch1Shop</h1>
+      <h1 >Potuzhno Shop</h1>
    <div>
       <p>This is not a pirated platform for watching movies, but you can see relevant information about the world of cinema ( but you can find pirates of the caribbean :) )</p>
       <p>This platform helps you find your favorite movies. You can also add them to your favorites and follow the latest news</p>

@@ -11,7 +11,10 @@ export const h2Styled = styled.h2`
 `
 
 export const NavStyled = styled(NavLink)`
-      margin: 28px;
+      margin-left: 28px; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
 `
 export const navigateStyled = styled.nav`
    display: flex;
@@ -28,4 +31,19 @@ export const logutStyled = styled.button`
         color: black;
       }
   
+`
+
+export const parentDivStyled = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const basketLengthStyled = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  border: 1px solid yellow;
+  background-color: yellow;
+  border-radius: 16px;
 `
