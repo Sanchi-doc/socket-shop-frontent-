@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    products: []
+  products: []
 } 
 
 export const basketSlice = createSlice({
-    name: 'basket',
-    initialState,
-    reducers: {
-        addToBasket: (state, {payload}) => {
-          state.products.push(payload)
-        },
-        removeFromBasket: (state, {payload}) => {
-          state.products = payload
-        }
+  name: 'basket',
+  initialState,
+  reducers: {
+    addToBasket: (state, {payload}) => {
+      state.products.push(payload)
+      },
+    removeFromBasket: (state, {payload}) => {
+      state.products = payload
+      }
     }
 }) 
 
