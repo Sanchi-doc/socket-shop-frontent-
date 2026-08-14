@@ -43,4 +43,6 @@ export const paragrafStyled = styled.p`
 `
 export const imageStyle = styled.img`
    border-radius: 16px;
+   width: 200px;
+   height: 200px;
 `

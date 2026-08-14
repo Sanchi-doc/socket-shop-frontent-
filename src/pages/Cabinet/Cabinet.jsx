@@ -11,6 +11,7 @@ export const Cabinet = () => {
     const [email, setEmail] = useState(data?.data.email)
     const [password, setPassword] = useState('')
     const [isShowPass, setShowPass] = useState('')
+    const [avatarUrl, setAvatarUrl] = useState(null)
     
     useEffect(()=>{
         setName(data?.data.name)
@@ -22,7 +23,7 @@ export const Cabinet = () => {
     }
 
     const handleInputChange = (event) => {
-       const {name, value} = event.target
+       const {name, value, files} = event.target
        switch(name){
         case 'name':
         setName(value)
@@ -32,6 +33,9 @@ export const Cabinet = () => {
         return
         case 'password':
         setPassword(value)
+        return
+        case 'avatar':
+        setAvatarUrl(files[0])
         return
         default: return    
        }
@@ -45,7 +49,8 @@ export const Cabinet = () => {
     return <>
     <SC.h2Styled>Cabinet</SC.h2Styled>
     <SC.formStyled onSubmit={handleSubmit}>
-    <SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10" alt="cabinet"/>
+        <input type='file' accept='image/*, .png, .jpeg, .webp' name='avatar' onChange={handleInputChange} />
+    {!avatarUrl?<SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10" alt="cabinet"/>: <SC.imageStyle src={URL.createObjectURL(avatarUrl)} alt="cabinet"/>}
     <SC.divStyled>
         <SC.paragrafStyled>Name: {name}</SC.paragrafStyled>
     <SC.inputStyled type="text" name="name" value={name} placeholder="change your name" onChange={handleInputChange} />
