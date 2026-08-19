@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { TbEye } from "react-icons/tb";
 import { TbEyeClosed } from "react-icons/tb";
+import { FaFileImage } from "react-icons/fa";
 import { useGetUserQuery } from '../../redux/user/userOperation';
 import { useUpdateUserMutation } from '../../redux/user/userOperation';
 import * as SC from './Cabinel.styled'
@@ -43,14 +44,27 @@ export const Cabinet = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        updateUser({name, email})
+        // updateUser({name, email})
+        const formData = new FormData()
+        formData.append('name', name)
+        formData.append('email', email)
+        formData.append("avatarUrl", avatarUrl? avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10")
+        updateUser(formData)
     }
 
     return <>
     <SC.h2Styled>Cabinet</SC.h2Styled>
     <SC.formStyled onSubmit={handleSubmit}>
-        <input type='file' accept='image/*, .png, .jpeg, .webp' name='avatar' onChange={handleInputChange} />
+    <SC.LabelImageWraper>
+        <label>
+        <SC.spanStyled>Upload a photo</SC.spanStyled>
+        <SC.divImageStyled>
+                <FaFileImage fill='brown'/>
+            </SC.divImageStyled>
+            <SC.inputFileStyled type='file' accept='image/*, .png, .jpeg, .webp' name='avatar' onChange={handleInputChange} />
+        </label>
     {!avatarUrl?<SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10" alt="cabinet"/>: <SC.imageStyle src={URL.createObjectURL(avatarUrl)} alt="cabinet"/>}
+    </SC.LabelImageWraper>
     <SC.divStyled>
         <SC.paragrafStyled>Name: {name}</SC.paragrafStyled>
     <SC.inputStyled type="text" name="name" value={name} placeholder="change your name" onChange={handleInputChange} />

@@ -43,6 +43,80 @@ export const paragrafStyled = styled.p`
 `
 export const imageStyle = styled.img`
    border-radius: 16px;
-   width: 200px;
-   height: 200px;
+   width: 300px;
 `
+
+export const inputFileStyled = styled.input`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  :active,
+  :focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: normal;
+    width: auto;
+  }
+`
+export const spanStyled = styled.span`
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+
+  :active,
+  :focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    white-space: normal;
+    width: auto;
+  }
+`
+
+export const divImageStyled = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+
+  transition: transform 250ms linear;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 8px;
+    height: 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+`;
+
+export const LabelImageWraper = styled.label`
+  position: relative;
+  `
