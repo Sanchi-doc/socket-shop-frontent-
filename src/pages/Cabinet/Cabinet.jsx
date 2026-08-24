@@ -13,10 +13,12 @@ export const Cabinet = () => {
     const [password, setPassword] = useState('')
     const [isShowPass, setShowPass] = useState('')
     const [avatarUrl, setAvatarUrl] = useState(null)
+    const [avatar, setAvatar] = useState(data?.data.avatarURL ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10')
     
     useEffect(()=>{
         setName(data?.data.name)
         setEmail(data?.data.email)
+        setAvatar(data?.data.avatarURL)
     },[data])
     
     const handleShowPass = () => {
@@ -48,7 +50,7 @@ export const Cabinet = () => {
         const formData = new FormData()
         formData.append('name', name)
         formData.append('email', email)
-        formData.append("avatarUrl", avatarUrl? avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10")
+        formData.append("avatar", avatarUrl? avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10")
         updateUser(formData)
     }
 
@@ -61,9 +63,9 @@ export const Cabinet = () => {
         <SC.divImageStyled>
                 <FaFileImage fill='brown'/>
             </SC.divImageStyled>
-            <SC.inputFileStyled type='file' accept='image/*, .png, .jpeg, .webp' name='avatar' onChange={handleInputChange} />
+            <SC.inputFileStyled type='file' accept='image/*, .png, .jpeg, .webp ' name='avatar' onChange={handleInputChange} />
         </label>
-    {!avatarUrl?<SC.imageStyle src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ppju8tTn4IzyKO7V0R-75-gTMb3q0DzFkdqErMhhhkT1dpuJdSDDu9g&s=10" alt="cabinet"/>: <SC.imageStyle src={URL.createObjectURL(avatarUrl)} alt="cabinet"/>}
+    {!avatarUrl?<SC.imageStyle src={avatar} alt="cabinet"/>: <SC.imageStyle src={URL.createObjectURL(avatarUrl)} alt="cabinet"/>}
     </SC.LabelImageWraper>
     <SC.divStyled>
         <SC.paragrafStyled>Name: {name}</SC.paragrafStyled>

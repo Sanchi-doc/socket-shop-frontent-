@@ -7,6 +7,7 @@ import { useAuth } from "../../hooks/useAuth"
 import {logout} from "../../redux/auth/authOperations"
 import {HeaderStyle} from './header.styled'
 import { Cabinet } from "../../pages/Cabinet/Cabinet"
+import gif from '../../images/потужно.gif'
 import * as SC from './header.styled'
 
 
@@ -21,6 +22,7 @@ export const Header = () => {
     return <SC.HeaderStyle>
     <SC.navigateStyled >
         <SC.h2Styled>Potuzhno Shop</SC.h2Styled>
+        <img src={gif} alt="gif" />
     <MainNav/>
     {!isLoggedIn && <AuthNav/> }
     {isLoggedIn && <SC.NavStyled to={`/cabinet`}>cabinet</SC.NavStyled>}
