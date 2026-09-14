@@ -52,6 +52,7 @@ function App() {
     <Route path='/category/:category' element = {<Categories/>}/>
     <Route path='/cabinet' element = {<Cabinet/>}/>
     <Route path='/basket' element = {<Basket/>}/>
+    {/* <Route path='products/categories' element = {</>} */}
     </Route>  
     </Routes>
   )

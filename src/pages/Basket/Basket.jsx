@@ -16,9 +16,10 @@ export const Basket = () => {
     const getTotalPrice = (value) => {
         setTotalPrice(value)
     }
+    
     return <>
-    {basket?.map(({id, title, image, price, count}) =>
-    <BasketListItem key={id}  id={id} title={title} image={image} price={price} count={count} getTotalPrice={getTotalPrice}/>)}
-    <p>Total:${(totalPrice).toFixed(2)}</p>
+    {basket?.map(({id, title, image, price, count, category}) =>
+    <BasketListItem key={id}  id={id} title={title} image={image} price={price} count={count}  category={category} getTotalPrice={getTotalPrice}/>)}
+    <p>Total: ${basket.length === 0? 0: (totalPrice).toFixed(2)}</p>
     </>
 }

@@ -1,10 +1,14 @@
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import * as SC from './BasketLisItem.styled'
 import { useState } from "react";
-export const BasketListItem = ({id, title, image, price, count, getTotalPrice}) => {
+import { removeFromBasket } from "../../redux/basket/basketReduser";
+
+export const BasketListItem = ({id, title, image, price, count, category, getTotalPrice}) => {
 
   const [basket, setBasket] = useState({id, title, image, price, count})
+  const dispatch = useDispatch()
 
   const IncrementCount = (event) => {
     const basketCount = JSON.parse(localStorage.getItem('basket'))??[]
@@ -24,16 +28,33 @@ export const BasketListItem = ({id, title, image, price, count, getTotalPrice}) 
     getTotalPrice(totalPrice)
   }
   
-  
-  return <SC.LiStyled>
-       <SC.ImgStyled src={basket.image} alt={basket.title}/>
-       <SC.H1Styled>{basket.title}</SC.H1Styled>
-       
+   const handleRemove = () => {
+     const countToRemove = JSON.parse(localStorage.getItem('basket'))?? []
+     const filterItems = countToRemove.filter(product => product.id != id)
+     localStorage.setItem('basket', JSON.stringify(filterItems))
+     setBasket(null)
+     dispatch(removeFromBasket(filterItems))
+     const totalPrice = filterItems.reduce((acc, item) => {acc = acc + (item.price * item.count);
+      return acc
+    }, 0)
+    getTotalPrice(totalPrice)
+   }
+   
+    if(!basket) {
+      return <></>
+    }
+
+  return <SC.LiStyled category={category}>
+       <SC.ImgStyled src={basket?.image} alt={basket?.title}/>
+       <SC.divColumnStyled>
+        <SC.H1Styled>{basket?.title}</SC.H1Styled>
       <SC.DivStyled>
         <SC.buttonStyled type="button" onClick={IncrementCount} name="increment"><FaArrowUp fill={'green'}/></SC.buttonStyled>
-        <p>count: {basket.count}</p>
-        <SC.buttonStyled type="button" onClick={IncrementCount} name="dicriment" disabled={basket.count===1}><FaArrowDown fill={'red'}/></SC.buttonStyled>
+        <p>count: {basket?.count}</p>
+        <SC.buttonStyled type="button" onClick={IncrementCount} name="dicriment" disabled={basket?.count===1}><FaArrowDown fill={'red'}/></SC.buttonStyled>
       </SC.DivStyled>
-      <p>Price: ${(+basket.price * +basket.count).toFixed(2)}</p>
+      <p>Price: ${(+basket?.price * +basket?.count).toFixed(2)}</p>
+      <SC.removeButtonStyled type="button" onClick={handleRemove}>remove item</SC.removeButtonStyled>
+      </SC.divColumnStyled>
     </SC.LiStyled>
 }

@@ -24,12 +24,18 @@ const authPersistConfig = {
     whitelist: ['token']
 }
 
+const basketPersistConfig = {
+    key: 'basket',
+    storage,
+    whitelist: ['products']
+}
+
 export const store = configureStore({
     reducer: {
         [authSlice.name]: persistReducer(authPersistConfig, authSlice.reducer),
-        [productsApi.reducerPath]: productsApi.reducer,
+        [productsApi.reducerPath]:  productsApi.reducer,
         [userApi.reducerPath]: userApi.reducer,
-        [basketSlice.name]: basketSlice.reducer
+        [basketSlice.name]: persistReducer(basketPersistConfig, basketSlice.reducer)
     },
     middleware: getDefaultMiddleware => [
         ...getDefaultMiddleware({

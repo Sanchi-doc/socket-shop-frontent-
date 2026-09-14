@@ -30,7 +30,8 @@ export const ShopDetails = () => {
             title: data?.title,
             image: data?.image,
             price: data?.price,
-            count: 1
+            count: 1,
+            category: data?.category
         }
         if(!isInBasket){
             dispatch(addToBasket(productToBuy))

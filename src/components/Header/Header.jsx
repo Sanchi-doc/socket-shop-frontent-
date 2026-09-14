@@ -17,17 +17,19 @@ export const Header = () => {
     await dispatch(logout())
 }
     const {isLoggedIn} = useAuth() 
-    const basket = JSON.parse(localStorage.getItem('basket'))?? []
     const basketLength = useSelector(getBasket).length
     return <SC.HeaderStyle>
     <SC.navigateStyled >
-        <SC.h2Styled>Potuzhno Shop</SC.h2Styled>
-        <img src={gif} alt="gif" />
+        <SC.TitleDivStyled>
+            <SC.h2Styled>Potuzhno Shop</SC.h2Styled>
+            <SC.GifStyled src={gif} alt="gif" />
+        </SC.TitleDivStyled>
+        
     <MainNav/>
     {!isLoggedIn && <AuthNav/> }
     {isLoggedIn && <SC.NavStyled to={`/cabinet`}>cabinet</SC.NavStyled>}
     <SC.parentDivStyled>
-        <SC.NavStyled to={`/basket`}>{<CiShoppingBasket size={32}/>}</SC.NavStyled>
+        <SC.NavStyled to={`/basket`}>{<CiShoppingBasket size={40}/>}</SC.NavStyled>
         <SC.basketLengthStyled>{basketLength}</SC.basketLengthStyled>
         </SC.parentDivStyled>
    {isLoggedIn && <SC.logutStyled  onClick = {handleLogout} type="button">logout</SC.logutStyled>}

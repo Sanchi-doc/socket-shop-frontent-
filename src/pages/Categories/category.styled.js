@@ -9,5 +9,19 @@ export const ulStyled =  styled.ul`
    background-color: yellow;
 `
 export const titleStyled = styled.h2`
-  color: #00adff
+  color: #00adff;
+  /* width: 100px */
+`
+export const LiStyled = styled.li`
+  /* margin: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+`
+export const ImagesProductStyled = styled.img`
+  display: block;
+  margin: 0 auto;
+  width: 300px;
 `

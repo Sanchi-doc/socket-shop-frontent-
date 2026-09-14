@@ -16,7 +16,7 @@ export const MainNav = () => {
        </SC.CategoryStyle>
     </li>)}
     <li>
-        <NavLink to={'/'}>Home</NavLink>
+        <SC.HomeStyled to={'/'}>Home</SC.HomeStyled>
     </li>
     </SC.NavList>
 }

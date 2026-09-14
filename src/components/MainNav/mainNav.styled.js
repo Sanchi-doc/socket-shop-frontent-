@@ -6,6 +6,7 @@ export const NavList = styled.ul`
     justify-items: center;
     align-items: center;
     gap: 20px;
+    font-size: 35px;
 `
 export const CategoryStyle = styled(NavLink)`
     text-decoration: none;
@@ -17,3 +18,7 @@ export const CategoryStyle = styled(NavLink)`
         color: yellow;
     }
 `
+
+export const HomeStyled = styled(NavLink)`
+  margin-right: 13px;
+` 
