@@ -2,21 +2,22 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom"
 
 export const HeaderStyle = styled.header`
-  background-color: #00adff;
+  background-color: DodgerBlue;
    border-radius: 0 0 12px 12px;
    padding-top: 20px;
    padding-bottom: 20px;
    width: 100vw;
 `
 export const h2Styled = styled.h2`
-   color: yellow;
+   color: Gold;
 `
 
 export const NavStyled = styled(NavLink)`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  margin: 10px
 `
 export const navigateStyled = styled.nav`
    display: flex;
@@ -32,7 +33,7 @@ export const logutStyled = styled.button`
     border-radius: ${p => p.theme.borders.borderRadius};
     cursor: pointer;
       &:hover{
-         background-color:yellow;
+         background-color:Gold;
         color: black;
       }
   
@@ -43,14 +44,13 @@ export const parentDivStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px
 `
 export const basketLengthStyled = styled.div`
   position: absolute;
   top: 10px;
   right: 25px;
-  border: 1px solid yellow;
-  background-color: yellow;
+  border: 1px solid Gold;
+  background-color: Gold;
   border-radius: 16px;
 `
 export const GifStyled = styled.img`

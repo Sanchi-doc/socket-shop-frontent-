@@ -9,14 +9,15 @@ import * as SC from './mainNav.styled'
 export const MainNav = () => {
     const {data} = useGetCategoriesQuery()
     return <SC.NavList>
+    <li>
+        <SC.HomeStyled to={'/'}>Home</SC.HomeStyled>
+    </li>
      {data?.data.map(({ id, href, category }) => 
     <li key={id}>
        <SC.CategoryStyle to={`/category/${href}`}>
        <p>{category}</p>
        </SC.CategoryStyle>
     </li>)}
-    <li>
-        <SC.HomeStyled to={'/'}>Home</SC.HomeStyled>
-    </li>
+   
     </SC.NavList>
 }

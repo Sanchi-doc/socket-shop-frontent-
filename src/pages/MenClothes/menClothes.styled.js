@@ -6,7 +6,7 @@ export const ulStyled = styled.ul`
    justify-content: center;
    align-items: center;
    gap: 20px;
-   background-color: yellow;
+   background-color: Gold;
 `
 export const titleStyled = styled.h2`
   color: #00adff

@@ -5,17 +5,17 @@ export const NavList = styled.ul`
     display: flex;
     justify-items: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     font-size: 35px;
 `
 export const CategoryStyle = styled(NavLink)`
     text-decoration: none;
     &:hover {
-        background-color: blueviolet;
+        background-color: DodgerBlue;
     }
 
     &.active{
-        color: yellow;
+        color: Gold;
     }
 `
 

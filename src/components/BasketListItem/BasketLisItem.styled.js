@@ -14,16 +14,16 @@ export const LiStyled = styled.li`
    border-radius: 16px;
    background-color: ${p => {
     if(p.category === "men's clothing") {
-      return "blue"
+      return "gray"
     }
     else if(p.category === "women's clothing"){
-      return 'pink'
+      return 'DarkSlateGrey'
     }
     else if (p.category === "electronics") {
-      return 'coral'
+      return 'Teal'
     }
-    else if (p.catgory === "jewelery") {
-      return 'gold'
+    else if (p.category === "jewelery") {
+      return 'LightGray'
     }
    }};
 `

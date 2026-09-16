@@ -26,7 +26,7 @@ export const theme = {
   colors: {
     deleteButton: 'brown',
     navBcg: 'whitesmoke',
-    basketCount: 'yellow',
+    basketCount: 'Gold',
     basketItem: 'white',
     backdropBackground: '#101510a1',
     mainColor: '#030072',

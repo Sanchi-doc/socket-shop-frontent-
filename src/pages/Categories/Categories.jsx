@@ -7,11 +7,11 @@ export const Categories = () => {
    return<SC.ulStyled>
     {data?.map(({id, title, image, price}) =>
     <SC.LiStyled key={id}>
-    <NavLink to={`/details/${id}`}>
+    <SC.navLinkImgStyled to={`/details/${id}`}>
         <SC.titleStyled>{title}</SC.titleStyled>
         <SC.ImagesProductStyled src={image} alt={title}/>
         <p>Price: ${price}</p>
-    </NavLink>
+    </SC.navLinkImgStyled>
     </SC.LiStyled>)}
    </SC.ulStyled>
 }
