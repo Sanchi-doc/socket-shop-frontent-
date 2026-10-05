@@ -8,6 +8,7 @@ import * as SC from './mainNav.styled'
 
 export const MainNav = () => {
     const {data} = useGetCategoriesQuery()
+    console.log('data', data)
     return <SC.NavList>
     <li>
         <SC.HomeStyled to={'/'}>Home</SC.HomeStyled>

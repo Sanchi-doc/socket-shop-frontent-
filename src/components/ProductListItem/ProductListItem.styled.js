@@ -8,6 +8,10 @@ export const LiCategoryStyled = styled.li`
   overflow: hidden;
   border-radius: 16px;
   border: 1px solid black;
-  width: 570px;
+  width: 350px;
   margin: 0 auto;
+`
+
+export const ImageCategoryStyled = styled.img`
+  width: 350px;
 `
